@@ -1,19 +1,23 @@
 import './App.css'
+import { Provider } from 'react-redux'
 import AppHeader from './components/AppHeader'
 import AppFooter from './components/AppFooter'
 import Counter from './components/Counter'
+import store from './store'
 
 function App() {
   return (
-    <div className="App">
-      <AppHeader />
-      <div className="App-body">
-        <div className="container">
-          <Counter />
+    <Provider store={store}>
+      <div className="App">
+        <AppHeader />
+        <div className="App-body">
+          <div className="container">
+            <Counter />
+          </div>
         </div>
+        <AppFooter />
       </div>
-      <AppFooter />
-    </div>
+    </Provider>
   );
 }
 

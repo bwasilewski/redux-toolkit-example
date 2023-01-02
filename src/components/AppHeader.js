@@ -1,11 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const AppHeader = () => {
+const AppHeader = ({count}) => {
   return (
     <header className="App-header">
-      <h1>Counter Example</h1>
+      <h1>Counter Example: {count}</h1>
     </header>
   )
 }
 
-export default AppHeader
+function mapStateToProps(state) {
+  return {
+    count: state.count
+  }
+}
+
+export default connect(mapStateToProps)(AppHeader)

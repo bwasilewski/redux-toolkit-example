@@ -1,18 +1,26 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const AppFooter = () => {
+const AppFooter = ({count}) => {
   return (
     <footer className="App-footer">
       <a
         className="App-link"
-        href="https://reactjs.org"
+        href="https://redux.js.org/tutorials/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Learn React
+        Learn Redux
       </a>
+      <small>{count}</small>
     </footer>
   )
 }
 
-export default AppFooter
+function mapStateToProps(state) {
+  return {
+    count: state.count
+  }
+}
+
+export default connect(mapStateToProps)(AppFooter)
