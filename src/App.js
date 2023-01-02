@@ -2,7 +2,7 @@ import './App.css'
 import { Provider } from 'react-redux'
 import AppHeader from './features/AppHeader'
 import AppFooter from './features/AppFooter'
-import Counter from './features/Counter'
+import Counter from './features/counter/Counter'
 import store from './store'
 
 function App() {

@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-import store from '../store'
+import store from '../../store'
 
 const Counter = () => {
-  const [count, setCount] = useState(store.getState().count)
+  const [count, setCount] = useState(store.getState().counter.value)
 
   const increment = () => {
-    store.dispatch({ type: "counter/incremented" })
-    setCount(store.getState().count)
+    store.dispatch({ type: "counter/increment" })
+    setCount(store.getState().counter.value)
   }
 
   const decrement = () => {
-    store.dispatch({ type: "counter/decremented" })
-    setCount(store.getState().count)
+    store.dispatch({ type: "counter/decrement" })
+    setCount(store.getState().counter.value)
   }
 
   return (
