@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
-
-
-const defaultState = 0
+import React, { useState } from 'react'
+import store from '../store'
 
 const Counter = () => {
-  const [currentCount, setCurrentCount] = useState(defaultState)
+  const [count, setCount] = useState(store.getState().count)
 
-  const increment = () => setCurrentCount(currentCount + 1);
+  const increment = () => {
+    store.dispatch({ type: "counter/incremented" })
+    setCount(store.getState().count)
+  }
 
-  const decrement = () => setCurrentCount(currentCount - 1);
+  const decrement = () => {
+    store.dispatch({ type: "counter/decremented" })
+    setCount(store.getState().count)
+  }
 
   return (
     <div>
       <h1>Counter</h1>
       <div className="is-flex">
         <button onClick={decrement} type="button">Decrement</button>
-        <h2>{currentCount}</h2>
+        <h2>{count}</h2>
         <button onClick={increment} type="button">Increment</button>
       </div>
     </div>
