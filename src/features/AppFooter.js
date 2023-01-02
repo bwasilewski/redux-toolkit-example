@@ -19,7 +19,7 @@ const AppFooter = ({count}) => {
 
 function mapStateToProps(state) {
   return {
-    count: state.count
+    count: state.counter.value
   }
 }
 
