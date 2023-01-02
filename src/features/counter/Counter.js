@@ -1,28 +1,19 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import store from '../../store'
+import { useDispatch, useSelector } from 'react-redux'
+import { increment, decrement, incrementByAmount } from './CounterSlice'
 
-const Counter = ({count}) => {
-  const increment = () => {
-    store.dispatch({ type: "counter/increment" })
-  }
-
-  const decrement = () => {
-    store.dispatch({ type: "counter/decrement" })
-  }
-
-  const incrementByAmount = () => {
-    store.dispatch({ type: "counter/incrementByAmount", payload: 5 })
-  }
+const Counter = () => {
+  const count = useSelector((state) => state.counter.value)
+  const dispatch = useDispatch()
 
   return (
     <div>
       <h1>Counter</h1>
       <div className="is-flex">
-        <button onClick={decrement} type="button">Decrement</button>
+        <button onClick={() => dispatch(decrement())} type="button">Decrement</button>
         <h2>{count}</h2>
-        <button onClick={increment} type="button">Increment</button>
-        <button onClick={incrementByAmount} type="button">
+        <button onClick={() => dispatch(increment())} type="button">Increment</button>
+        <button onClick={() => dispatch(incrementByAmount())} type="button">
           Increment by amount
         </button>
       </div>
@@ -30,10 +21,4 @@ const Counter = ({count}) => {
   );
 }
  
-const mapStateToProps = (state) => {
-  return {
-    count: state.counter.value
-  }
-}
-
-export default connect(mapStateToProps)(Counter)
+export default Counter
